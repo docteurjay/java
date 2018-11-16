@@ -1,0 +1,124 @@
+/***********************************************************************************************
+    Chapter 11
+    Programmer: Ariste Jean
+    Date: 11/4/18
+    Filename: TravelCommission.java
+    Purpose: .  This program will be used to calculate the sales commission for a travel agency.
+    An agent can earn a commission on three types of sales
+    (1) telephone, 2) in-store, and 3) outside) which earn a different sales commission.
+ **********************************************************************************************/
+    import javax.swing.JOptionPane;
+    import java.text.DecimalFormat;
+
+    public class TravelCommission  {
+
+    //Declare and construct variables
+    public static double dollars;
+    public static double answer;
+    public static int empCode;
+
+    //Create Constructor for travel commission
+    public TravelCommission(double dollars, double answer) {
+        this.dollars = dollars;
+        this.answer = answer;
+    }
+    public static double getSales() {
+        //Declare method variables
+        double salesNumber = 0.0;
+        boolean SalesDone = false;
+        while (!SalesDone) {
+            String SaleInfo = JOptionPane.showInputDialog(null, "Enter the sales amount \n(do not use commas or dollar signs) \nor click Cancel to exit ");
+            if (SaleInfo == null) finish();
+            try {
+                salesNumber = Double.parseDouble(SaleInfo);
+
+                //Throwing Exception for the amount enter different than an integer
+                if (salesNumber <= 0) throw new NumberFormatException();
+                else
+                    SalesDone = true;
+
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Error - Enter a number that is greater than zero", "Error", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        }
+            return salesNumber;
+        } //End of getSales() method.
+
+
+    //Create the getCode() method to retrieve the Code
+    public static int getCode() {
+        //Declare method variables
+        int salesCode = 0;
+
+        //Create a while loop to continue the program until user enter the right code
+        boolean SalesDone1 = false;
+        while (!SalesDone1) {
+
+            String SaleInfo = JOptionPane.showInputDialog(null, "Enter the commission code: \n1)Telephone Sales \n2)In-Store Sales \n3) outside Sales");
+            if (SaleInfo == null) finish();
+
+            try {
+                salesCode = Integer.parseInt(SaleInfo);
+                if (salesCode < 0 || salesCode > 3) throw new NumberFormatException();
+                else
+                    SalesDone1 = true;
+
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Please enter a 1, 2, or 3.", "Error", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        return salesCode;
+
+    }//End of the getCode():
+
+    //Create a method to calculate the commission.
+    public static double getComm(double dollars, int empCode) {
+        double comm = 0.0;
+        switch ( empCode){
+            case 1:
+                comm = .10 * dollars;
+                break;
+            case 2:
+                comm = .14 * dollars;
+                break;
+            case 3:
+                comm = .18 * dollars;
+                break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Please enter a 1, 2, or 3.", "Error", JOptionPane.INFORMATION_MESSAGE);
+        }
+        return comm;
+
+    }
+
+    //Create the output method to display the result
+    public static void output(double dollars, double answer) {
+
+        //Create the decimal for format to convert the somme
+        DecimalFormat twoDigits = new DecimalFormat("#,###.00");
+
+        JOptionPane.showMessageDialog(null, "Your commission on sales of $" + twoDigits.format(dollars) + " is " + twoDigits.format(answer), "Commission Totals", JOptionPane.INFORMATION_MESSAGE);
+
+
+    }// End of the output() method.
+
+     //Create finish() method to end the program
+     public static void finish() {
+        System.exit(0);
+
+    }//Create finish() to end the program.
+
+    //Create the main() method
+    public static void main(String[] args) {
+
+        //Call methods
+        dollars = getSales();
+        empCode = getCode();
+        answer = getComm(dollars, empCode);
+        output(dollars, answer);
+        finish();
+
+    } //End of main method
+
+    } //End of the class
