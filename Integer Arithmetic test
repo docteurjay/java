@@ -1,0 +1,56 @@
+
+Programmer: Ariste Jean
+Date: 9/2/18
+Filename: MyFirstJava
+Purpose: The purpose of this program is to produce an integer arithmetic test
+ */
+
+
+import java.util.Scanner;
+
+public class MyFirstJava {
+
+    public static void main(String[] args) {
+
+
+        Scanner input = new Scanner(System.in);
+
+        //Declare integer variables
+
+        int num1;
+        int num2;
+
+
+        System.out.println("** Integer arithmetic tests ** ");
+        System.out.println(" ");
+
+        //Integer arithmetic tests
+        System.out.print("Enter the first integer to test: ");
+        num1 = input.nextInt();
+        System.out.print("Enter the second integer to test: ");
+        num2 = input.nextInt();
+        System.out.println("The sum of " + num1  + " + " + num2 + " = " + (num1 + num2));
+        System.out.println("The subtraction of " + num1  + " - " + num2 + " = " + (num1 - num2));
+        System.out.println("The multiplication of " + num1  + " * " + num2 + " = " + (num1 * num2));
+        System.out.println("The division of " + num1  + " / " + num2 + " = " + (num1 / num2));
+        System.out.println("The remainder of " + num1  + " % " + num2 + " = " + (num1 % num2));
+        System.out.println("");
+
+
+        // Real arithmetic tests
+
+        System.out.println("** Real arithmetic tests ** ");
+        float real1, real2;
+        System.out.print("Enter the first real to test: ");
+       real1  = input.nextFloat();
+        System.out.print("Enter the second real to test: ");
+        real2  = input.nextFloat();
+        System.out.println("The sum of " + real1  + " + " + real2 + " = " + (real1 + real2));
+        System.out.println("The difference  of " + real1  + " - " + real2 + " = " + (real1 - real2));
+        System.out.println("The product of " + real1  + " * " + real2 + " = " + (real1 * real2));
+        System.out.println("The division of " + real1  + " / " + real2 + " = " + (real1 / real2));
+
+
+
+    }
+}
