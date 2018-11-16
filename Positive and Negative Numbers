@@ -1,0 +1,74 @@
+/*************************************************************************************************************************************************
+
+    Programmer:  Ariste Jean
+    Date : 9/26/18
+    Program Name:  Positive and Negative Numbers
+    Purpose: Write a program that asks the user to enter a number between 5 and 10 (include error checking)
+    and uses that variable in a for loop.
+    The for loop will ask the user to enter an integer
+    and keep track of whether the integer is positive, negative or zero.
+***********************************************************************************************************************************************/
+
+
+import java.util.Scanner;
+
+public class Numbers {
+
+
+    public static void main(String[] args) {
+
+        //Create the Scanner input
+        Scanner input = new Scanner(System.in);
+
+
+        //Declaring variables
+        int number1;
+        int number2 = 0;
+        int count = 0;
+        int positiveTotal = 0;
+        int negativeTotal =  0;
+
+
+        //Display for the header  that will continue with a loop
+        System.out.println("     Positive and Negative Numbers ");
+        System.out.println();
+
+        do
+        {
+            System.out.println("Enter the amount of integers to be entered: ");
+            System.out.print("Must be between 5 and 10: ");
+            number1 = input.nextInt();
+
+        }
+            while (number1 < 6 || number1 > 9);
+
+            for (int j=1; j <= number1; j++)
+
+            {
+                System.out.print("Enter number " + j + " :");
+                number2 = input.nextInt();
+                System.out.println();
+
+
+                if(number2 == 0) {
+                    count +=1;
+                }  else if(number2 < 0)
+
+                {
+                  negativeTotal += 1;
+
+                }
+                    else {
+                        positiveTotal += 1;
+                }
+
+          }
+
+        //Display the total number oof zeros, positive and negative numbers
+        System.out.println("Total zeros: " +count);
+        System.out.println("Total positive integers: " + positiveTotal);
+        System.out.print("Total negative integers: " + negativeTotal);
+
+
+    }
+}
