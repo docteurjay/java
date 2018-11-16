@@ -1,0 +1,71 @@
+
+Programmer : Ariste Jean
+Date: 9/9/18
+Filename: Currency.java
+
+Purpose: Create a console that prompts the user to enter a US dollar amount
+to convert it to euros, pounds or rubles .
+
+ */
+
+import java.util.Scanner;
+
+public class Currency {
+
+    public static void main(String[] args) {
+
+        //Create a Scanner input
+        Scanner input = new Scanner(System.in);
+
+
+        // Declare variables
+
+        double euros;
+        double pound;
+        double rubles;
+        double amount;
+
+
+        //Prompts user to enter amount
+        System.out.print("Enter the US dollar amount: ");
+         amount = input.nextDouble();
+
+        //Display the user choice
+        System.out.println("Enter a 1 to convert to euro");
+        System.out.println("Enter a 2 to convert to pounds");
+        System.out.println("Enter a 3 to convert to rubles");
+
+        //Prompts for users to enter their choice
+        System.out.print("Enter your conversion choice: ");
+        int choice = input.nextInt();
+
+
+        switch (choice) {
+
+            case 1:
+                //Display 1 if user choice to convert to euros
+                euros = amount * 0.87;
+                System.out.println("The dollar amount of " + amount + " is equal to " + euros  + "euros.");
+            break;
+            case 2:
+
+                //Display 2 if user choice to convert to pounds
+                pound = amount * 77.38;
+                System.out.println("The dollar amount of " + amount + " is equal to " +  pound  + "pounds.");
+            break;
+            case 3:
+
+                //Display 3 if user choice to convert to rubles
+                rubles = amount * 6975.53;
+                System.out.print("The dollar amount of " + amount + "is equal to " + rubles + "rubles.");
+                break;
+             default:
+
+                 //Display default if user choice the wrong number to make conversion
+                 System.out.print("Please enter the correct number. Choose 1, 2 or 3 to convert.");
+
+        }
+
+
+    }
+}
