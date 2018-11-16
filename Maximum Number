@@ -1,0 +1,57 @@
+/*************************************************************************************************************************************************
+ Programmer:  Ariste Jean
+ Date : 9/26/18
+ Program Name:  Find the Maximum number
+ Purpose: Write a program that reads a mix of positive and negative integers, finds the largest of them and counts its occurrences.
+ ***********************************************************************************************************************************************/
+
+
+
+import jdk.nashorn.internal.ir.WhileNode;
+
+import java.util.Scanner;
+
+
+public class MaximumNumber {
+
+    public static void main(String[] args) {
+
+        //Create a Scanner for the input
+        Scanner input = new Scanner(System.in);
+
+        //Declare variables
+        int number1 =0;
+        int maxNumber = 0;
+        int count = 1;
+
+        //Display the output
+        System.out.println("  Find the maximum number");
+        System.out.println();
+
+        System.out.print("Enter a integer (0 ends the input): ");
+        number1 = input.nextInt();
+
+        //Condition Statement
+        if (number1 == 0) {
+            System.out.println("No numbers are entered except " + number1);
+            System.exit(0);
+            
+        }
+        while (number1 != 0) {
+           if (number1 > maxNumber) {
+              maxNumber =  number1;
+               
+            } else if (number1 == maxNumber) {
+                count++;
+            }
+          System.out.print("Enter a integer (0 ends the input): ");
+                number1 = input.nextInt();
+        }
+
+        //Display the result here
+        System.out.println("The maximum number is " + maxNumber);
+            System.out.println("The count for the max number is " + count);
+
+    }
+
+}
