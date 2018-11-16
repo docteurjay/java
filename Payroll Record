@@ -1,0 +1,61 @@
+/*
+
+   Programmer:  Ariste Jean
+   Date: 9/16/18
+   Program Name:  Payroll Record
+   Purpose: Program will ask user to enter an employee's name,
+   hours worked, hourly pay, federal and state tax rates.
+*/
+
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+public class Payroll {
+
+    public static void main(String[] args) {
+
+        DecimalFormat one = new DecimalFormat("(##.0%)");
+        DecimalFormat two = new DecimalFormat("$#,###.00");
+
+        Scanner input = new Scanner(System.in);
+         //Declaring Variables
+        String name;
+        int hoursWorked;
+        double   payRate, federalTax, stateTax, grossPay, federalWithHolding, stateHolding, totalDeduction, netPay;
+
+        System.out.println("      Payroll Record    ");
+
+        // Get input from User
+        System.out.print("Enter employee's name: ");
+        name = input.next();
+        System.out.print("Enter number of hours worked in a week:");
+        hoursWorked = input.nextInt();
+        System.out.print("Enter hourly pay rate:");
+        payRate = input.nextDouble();
+        System.out.print("Enter federal tax withholding rate:");
+        federalTax = input.nextDouble();
+        System.out.print("Enter state tax withholding rate:");
+        stateTax = input.nextDouble();
+
+        //Calculations
+        grossPay = hoursWorked * payRate;
+        federalWithHolding = grossPay * 0.20;
+        stateHolding = grossPay * 0.09;
+        totalDeduction = federalWithHolding + stateHolding;
+        netPay = grossPay - totalDeduction;
+
+        //Output from the input user.
+        System.out.println(" ");
+        System.out.println("Employee's name: " + name);
+        System.out.println("Hours worked: " + hoursWorked);
+        System.out.println("Pay rate:     "  +  two.format(payRate));
+        System.out.println("Gross pay:    " + two.format(grossPay));
+        System.out.println("Deductions:   ");
+        System.out.println("   Federal Withholding " + one.format((federalTax)) + ":  " + two.format(federalWithHolding));
+        System.out.println("   State Withholding " + one.format((stateTax)) + ":  " + two.format(stateHolding));
+        System.out.println("   Total Deduction :    "  + two.format(totalDeduction));
+        System.out.println("Net Pay:   "  + two.format(netPay));
+
+
+    }
+}
