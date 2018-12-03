@@ -1,0 +1,102 @@
+/*****************************************************************************************************                                                                         
+	Date:       12/1/18                                                                              
+	Filename:	Tuition Calcalutor                                                                         
+	Purpose:  A small college that offers distance-learning courses would like an application that 
+ calculates total tuition and fees for their students. Users will input the number of hours; 
+ the program will then calculate the total cost.
+ For full-time students taking greater than 15 hours of courses, 
+ the cost per credit hour is $45.00.  
+ Part-time students taking 15 hours or less will pay $55.00 per hour.  
+ Fees will equal 8 percent of tuition.
+******************************************************************************************************/
+
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class Tuition {
+   public static int  hours;
+   public static double tuition, fees, rate;
+
+   //Constructor
+   public Tuition(int hours, double rate) {
+       this.hours = hours;
+       this.rate = rate;
+
+   }//End of the constructor
+
+    //Create a method to get the hours
+   public static int getHours() {
+
+       Scanner input;
+       input = new Scanner(System.in);
+
+       //Create a variable
+       int creditHours = 0;
+       boolean done = false;
+       while (!done) {
+           System.out.print("Enter the number of credit hours: ");
+           String inputTuition = input.nextLine();
+           if (inputTuition == null)  {
+               throw new NumberFormatException("Error, enter an integer greater than 0");
+           }
+           try {
+               creditHours = Integer.parseInt(inputTuition);
+
+               if (creditHours <= 0) throw new NumberFormatException();
+               else
+                   done = true;
+
+           } catch (NumberFormatException ex) {
+               System.out.println("Error, enter an integer greater than 0");
+           }
+
+       }//End of the While Loop
+       return creditHours;
+
+   } //End of the getHour method
+
+    //Create a method to get rate per hour
+    public static double getRate(int hours) {
+       return hours;
+    }//End of the getRate method
+
+    //Create method to calculate the tuition cost
+    public static double calcTuition(double hours, double rate) {
+        if (hours >= 15) {
+            rate = 45 * hours;
+        } else if (hours < 15) {
+            rate = 55 * hours;
+
+        }
+        return rate;
+    } //End of the calcTuition method
+
+    //Create method to calculate the tuition fees
+    public static double calcFees(double tuition) {
+       double tuitionFees  = tuition * 0.08;
+       System.out.println("I love Coding");
+              return tuitionFees;
+    }//End of the calcFees method
+
+    //Create method to display the tuition cost
+    public static void displayTotal(double tuition, double fees) {
+        DecimalFormat decimalFormat  = new DecimalFormat("$#,####.00");
+        double total = tuition + fees;
+       System.out.println("The tuition cost of " + decimalFormat.format(tuition)
+               + " plus fees of " + decimalFormat.format(fees) + " equals " +  decimalFormat.format(total));
+    }//End of the displayTotal method
+
+    //Declare main method
+    public static void main(String[] args) {
+
+
+        //Call methods inside of main method
+        hours = getHours();
+        rate = getRate(hours);
+        tuition = calcTuition(hours, rate);
+        fees = calcFees(tuition);
+        displayTotal(tuition, fees);
+
+    } //End of the main method
+
+}//End of the Class
